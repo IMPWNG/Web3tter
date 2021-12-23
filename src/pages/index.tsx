@@ -4,6 +4,8 @@ import { useMoralis } from 'react-moralis';
 
 import LoginPage from "../components/sections/login";
 import Sidebar from '../components/Sidebar';
+import Feed from '../components/Feed';
+import WalletInfo from '../components/WalletInfo';
 
 const Home: NextPage = () => {
   const { isAuthenticated, logout } = useMoralis();
@@ -23,6 +25,8 @@ const Home: NextPage = () => {
       </Head>
         <main className="bg-black min-h-screen flex max-w-[1500px] mx-auto">
           <Sidebar />
+          <Feed />
+          <WalletInfo />
         </main>
     </div>
   )
