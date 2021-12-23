@@ -2,7 +2,6 @@ import { useEffect, useState, Fragment } from "react";
 
 import { useChain } from "react-moralis";
 
-import { SelectorIcon } from '@heroicons/react/solid';
 import { Listbox, Transition } from '@headlessui/react'
 
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logo";
@@ -87,18 +86,9 @@ export default function Chains() {
             <Listbox value={selected} onChange={handleMenuClick}>
                 {({ open }) => (
                     <div className="sticky top-0 py-1.5 bg-black z-50 w-11/12 xl:w-9/12">
-                        <span className="focus:border-[#1d9bf0] flex items-center p-3 rounded-full relative">
-                            <Listbox.Button className="bg-transparent outline-none text-[#d9d9d9] inset-0 pl-11 border border-transparent w-full focus:border-[#1d9bf0] rounded-full focus:bg-black focus:shadow-lg">
-                                <span className="">{selected?.icon}</span>
-                                <span className="">{selected?.value}</span>
-                                <span className="">
-                                    <SelectorIcon
-                                        className="w-5 h-5 text-gray-400"
-                                        aria-hidden="true"
-                                    />
-                                    {/* <div className="sticky top-0 py-1.5 bg-black z-50 w-11/12 xl:w-9/12">
-                                        <div className="flex items-center bg-[#202327] p-3 rounded-full relative"> */}
-                                </span>
+                        <span className="focus:border-[#1d9bf0]">
+                            <Listbox.Button className="pt-2 pb-2 bg-transparent outline-none text-[#d9d9d9] inset-0 pl-11 border border-transparent w-full focus:border-[#1d9bf0] rounded-full focus:bg-black focus:shadow-lg">
+                                <span className="text-center flex justify-evenly">{selected?.value}{selected?.icon}</span>
                             </Listbox.Button>
                         </span>
                         <Transition
@@ -114,8 +104,8 @@ export default function Chains() {
                                         key={network.key}
 
                                         className={({ active }) =>
-                                            `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'}
-                            cursor-default select-none relative py-2 pl-10 pr-4`
+                                            `${active ? 'text-amber-900 bg-amber-500' : 'text-gray-900'}
+                                            cursor-default select-none relative py-2 pl-10 pr-4`
                                         }
                                         value={network}
                                     >
@@ -125,19 +115,20 @@ export default function Chains() {
                                                     className={`${selected ? "font-medium" : "font-normal"
                                                         } block truncate`}
                                                 >
-                                                    {network.value}
+                                               
+                                                        {network.value}{network.icon}
+                                                 
                                                 </span>
                                                 <span
                                                     className={`${selected ? "font-medium" : "font-normal"
                                                         } block truncate`}
                                                 >
-                                                    {network.icon}
                                                 </span>
                                                 {selected ? (
                                                     <span
                                                         className={`${active ? 'text-amber-600' : 'text-amber-600'
                                                             }
-                                    absolute inset-y-0 left-0 flex items-center pl-3`}
+                                                         absolute inset-y-0 left-0 flex items-center pl-3`}
                                                     >
                                                     </span>
                                                 ) : null}
