@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/ui/nativeBalance/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/ui/nativeBalance/index.tsx", "src/components/ui/tokenPrice/index.js"],
   "exclude": ["node_modules"]
 }
