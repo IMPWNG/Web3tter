@@ -1,15 +1,22 @@
-# Basic Sample Hardhat Project
+# Twitter Like with web3 integration
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+## Features
 
-Try running some of the following tasks:
+- Login logout using Moralis Provider (Metamask)
+- Multi chain selector 
+- Wallet Balance view depend on your native token by chain selected 
+- Native token price by chain selected
+- Post, comment, like, share tweet with your address/ens
+- Notification when interaction with your address
+- Transform tweet into NFT
+- Profil : NFT owned (add features for the futur)
+ ...
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+
+
+## Error
+
+Error: XMLHttpRequest failed: "Unable to connect to the Parse API"
+>   Just restore the Moralis Session
+
+
