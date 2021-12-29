@@ -1,6 +1,6 @@
 # Twitter Like with web3 integration
 
-![Alt Text](https://giphy.com/embed/9N5fcwJe5nrXxJYour)
+![Alt Text](https://media.giphy.com/media/9N5fcwJe5nrXxJYour/giphy.gif)
 
 ## Features
 
