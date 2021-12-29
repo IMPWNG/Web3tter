@@ -3,7 +3,7 @@ import SidebarLink from './ui/sideBarLink';
 import { useMoralis } from "react-moralis";
 import { Ethereum } from "@icons-pack/react-simple-icons";
 import { HomeIcon } from "@heroicons/react/solid";
-import { PhotographIcon, PencilAltIcon, ViewBoardsIcon, NewspaperIcon, SearchIcon } from "@heroicons/react/outline";
+import { SearchIcon, HashtagIcon, BellIcon, InboxIcon, BookmarkIcon, ClipboardListIcon, UserIcon, DotsCircleHorizontalIcon, DotsHorizontalIcon } from "@heroicons/react/outline";
 
 import AccountButton from "./ui/accountButton";
 
@@ -17,10 +17,12 @@ export default function Sidebar() {
             </div>
             <div className="space-y2.5 mt-4 mb-2.5 xl:ml-24">
                 <SidebarLink text="Home" Icon={HomeIcon} active />
-                <SidebarLink text="NFT Gallery" Icon={PhotographIcon} />
-                <SidebarLink text="NFT Creation" Icon={PencilAltIcon} />
-                <SidebarLink text="NFT Dashboard" Icon={ViewBoardsIcon} />
-                <SidebarLink text="NFT Actu" Icon={NewspaperIcon} />
+                <SidebarLink text="Explore" Icon={HashtagIcon} />
+                <SidebarLink text="Notifications" Icon={BellIcon} />
+                <SidebarLink text="Messages" Icon={InboxIcon} />
+                <SidebarLink text="Bookmarks" Icon={BookmarkIcon} />
+                <SidebarLink text="List" Icon={ClipboardListIcon} />
+                <SidebarLink text="More" Icon={DotsCircleHorizontalIcon} />
             </div>
             <div className="sticky top-0 py-1.5 bg-black z-50 w-11/12 xl:w-9/12">
                 <div className="space-y2.5 mt-4 mb-2.5 xl:ml-24 flex items-center bg-[#202327] p-3 rounded-full relative">
@@ -33,6 +35,7 @@ export default function Sidebar() {
                 </div>
             </div>
             <AccountButton />
+            
         </div>
     )
 };

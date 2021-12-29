@@ -1,5 +1,7 @@
 # Twitter Like with web3 integration
 
+![Alt Text](https://media.giphy.com/media/9N5fcwJe5nrXxJYour/giphy.gif)
+
 ## Features
 
 - Login logout using Moralis Provider (Metamask)

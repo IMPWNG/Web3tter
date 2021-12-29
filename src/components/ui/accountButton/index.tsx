@@ -1,8 +1,7 @@
 import { useMoralis } from "react-moralis";
-import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from '@headlessui/react';
 import { Button } from "antd";
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { getExplorer } from "../../../helpers/networks";
 import { getEllipsisTxt } from "../../../helpers/formatters";
 
