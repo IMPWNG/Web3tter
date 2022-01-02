@@ -10,6 +10,16 @@ export default function Post() {
     const [messages, setMessages] = useState();
     const [updated, setUpdated] = useState();
 
+    const subscribeToMessages = async () => {
+        let query = new Moralis.Query('Messages');
+        let subscription = await query.subscribe();
+        subscription.on('create', notifyOnCreate);
+    }
+
+    const notifyOnCreate = (result) => {
+        setUpdated(result)
+    }
+
     const getAllMessages = async () => {
         const result = await Moralis.Cloud.run("getAllMessages");
         setMessages(result)
@@ -20,12 +30,21 @@ export default function Post() {
     }
 
     useEffect(() => {
+        subscribeToMessages();
+    }, []);
+
+
+    useEffect(() => {
         setMessage('');
     }, [updated]);
 
     useEffect(() => {
         getAllMessages();
     }, [updated]);
+
+    const dateConverter = (date) => {
+        return date?.toISOString("MM-DD-YYYY").split("T")[0];
+    };
 
 
 
@@ -35,13 +54,21 @@ export default function Post() {
                 <div className="flex justify-between">
                     <div className="text-[#6e767d">
                         <div className="inline-block group">
+                            <div className="text-[#6e767d">
+                                <div className="inline-block group">
+                                    {!isCurrentUser(message[0] && message[0].userId) &&
+                                        <div style={{ flexDirection: 'row' }}>
+                                            <div>
+                                                {message[0] && message[0].userName}
+                                            </div>
+                                            <div>
+                                                {` (${message[0] && message[0].ethAddress})`}
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
-                        ·{"   "}
-
-                
-                           
-                        <span className="hover:underline text-sm sm:text-[15px]">
-                        </span>
                     </div>
                 </div>
             </div>
