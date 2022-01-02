@@ -3,12 +3,16 @@ import { XIcon } from '@heroicons/react/solid';
 import { PhotographIcon, DocumentAddIcon, EmojiHappyIcon } from '@heroicons/react/outline';
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import { useMoralis } from "react-moralis";
 
 import Blockie from "../blockies";
 
 
 export default function Input() {
-
+    const { Moralis, user } = useMoralis();
+    const currentUserId = user.id;
+    const [message] = useState();
+    const newMessage = new Moralis.Object("Messages");
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [showEmojis, setShowEmojis] = useState(false);
@@ -18,11 +22,13 @@ export default function Input() {
     const sendPost = async () => {
         if (loading) return;
         setLoading(true);
-
         setLoading(false);
         setInput("");
         setSelectedFile(null);
         setShowEmojis(false);
+        newMessage.set('userId', currentUserId);
+        newMessage.set('message', message);
+        newMessage.save();
     };
 
     const addImageToPost = (e) => {
@@ -43,6 +49,7 @@ export default function Input() {
         let emoji = String.fromCodePoint(...codesArray);
         setInput(input + emoji);
     };
+   
     <Blockie className = "h-8 w-8 rounded-full" currentWallet scale = { 3} />
 
     return (
@@ -110,7 +117,7 @@ export default function Input() {
                             </div>
                         </div>
                         <button disabled={!input && !selectedFile} onClick={sendPost} className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default">
-                            Tweet
+                            Send
                         </button>
                     </div>
                 )}

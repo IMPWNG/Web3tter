@@ -2,6 +2,7 @@ import { SparklesIcon } from "@heroicons/react/outline";
 import { useState, useEffect } from "react";
 import TokenPrice from "./ui/tokenPrice";
 import Input from "./ui/input";
+import Post from "./ui/post";
 
 export default function Feed() {
 
@@ -16,6 +17,9 @@ export default function Feed() {
                 </div>
             </div>
             <Input />
+            <div className="pb-72">
+                 <Post />
+            </div>
         </div>
     )
 }
