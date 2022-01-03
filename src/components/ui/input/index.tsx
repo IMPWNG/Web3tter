@@ -12,16 +12,15 @@ export default function Input() {
     const { Moralis, user } = useMoralis();
     const currentUserId = user.id;
     const [date, viewDate] = useState(false);
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState("");
     const [messages, setMessages] = useState();
-    const [updated, setUpdated] = useState();
+    const [updated, setUpdated] = useState("");
     const newMessage = new Moralis.Object("Messages");
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [showEmojis, setShowEmojis] = useState(false);
     const [loading, setLoading] = useState(false);
     const filePickerRef = useRef(null);
-
     const subscribeToMessages = async () => {
         let query = new Moralis.Query('Messages');
         let subscription = await query.subscribe();
@@ -33,8 +32,9 @@ export default function Input() {
 
     useEffect(() => {
         setMessage('');
-    }, [updated])
+    }, [updated]);
 
+  
     const sendPost = async () => {
         if (loading) return;
         setLoading(true);
