@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { XIcon } from '@heroicons/react/solid';
 import { PhotographIcon, DocumentAddIcon, EmojiHappyIcon } from '@heroicons/react/outline';
 import "emoji-mart/css/emoji-mart.css";
@@ -11,13 +11,29 @@ import Blockie from "../blockies";
 export default function Input() {
     const { Moralis, user } = useMoralis();
     const currentUserId = user.id;
-    const [message] = useState();
+    const [date, viewDate] = useState(false);
+    const [message, setMessage] = useState();
+    const [messages, setMessages] = useState();
+    const [updated, setUpdated] = useState();
     const newMessage = new Moralis.Object("Messages");
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [showEmojis, setShowEmojis] = useState(false);
     const [loading, setLoading] = useState(false);
     const filePickerRef = useRef(null);
+
+    const subscribeToMessages = async () => {
+        let query = new Moralis.Query('Messages');
+        let subscription = await query.subscribe();
+    }
+
+    useEffect(() => {
+        subscribeToMessages();
+    }, []);
+
+    useEffect(() => {
+        setMessage('');
+    }, [updated])
 
     const sendPost = async () => {
         if (loading) return;
@@ -116,7 +132,7 @@ export default function Input() {
                                 />
                             </div>
                         </div>
-                        <button disabled={!input && !selectedFile} onClick={sendPost} className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default">
+                        <button disabled={!input && !selectedFile} onClick={() => sendPost()} className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default">
                             Send
                         </button>
                     </div>

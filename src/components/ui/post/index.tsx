@@ -55,7 +55,7 @@ export default function Post() {
                     <div className="text-[#6e767d">
                         <div className="inline-block group">
                             <div className="text-[#6e767d">
-                                <div className="inline-block group">
+                                {/* <div className="inline-block group">
                                     {!isCurrentUser(message[0] && message[0].userId) &&
                                         <div style={{ flexDirection: 'row' }}>
                                             <div>
@@ -66,7 +66,7 @@ export default function Post() {
                                             </div>
                                         </div>
                                     }
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
