@@ -1,78 +1,68 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useMoralis } from "react-moralis";
 
+import Blockie from "../blockies";
+import { getEllipsisTxt } from "../../../helpers/formatters";
 
 export default function Post() {
 
-    const { Moralis, user } = useMoralis();
+    const { Moralis, user, account } = useMoralis();
     const currentUserId = user.id;
-    const [message, setMessage] = useState(null);
-    const [messages, setMessages] = useState();
+    const [inputs, setInputs] = useState<any[]>([]);
     const [updated, setUpdated] = useState();
-
-    const subscribeToMessages = async () => {
-        let query = new Moralis.Query('Messages');
-        let subscription = await query.subscribe();
-        subscription.on('create', notifyOnCreate);
-    }
-
-    const notifyOnCreate = (result) => {
-        setUpdated(result)
-    }
+    const newMessage = new Moralis.Object("Messages");
 
     const getAllMessages = async () => {
         const result = await Moralis.Cloud.run("getAllMessages");
-        setMessages(result)
+        setInputs(result)
     }
 
     const isCurrentUser = (userId) => {
         return currentUserId === userId;
     }
 
-    useEffect(() => {
-        subscribeToMessages();
-    }, []);
 
-
-    useEffect(() => {
-        setMessage('');
-    }, [updated]);
-
-    useEffect(() => {
-        getAllMessages();
-    }, [updated]);
-
-    const dateConverter = (date) => {
-        return date?.toISOString("MM-DD-YYYY").split("T")[0];
-    };
-
+ 
 
 
     return (
-        <div className="p-3 flex border-b border-gray-700">
+        <div className="p-3 flex cursor-pointer border-b border-gray-700">
+            <Blockie className="h-8 w-8 rounded-full" currentWallet scale={3} />
+            
             <div className="flex flex-col space-y-2 w-full">
-                <div className="flex justify-between">
+                <div className="flexjustify-between">
                     <div className="text-[#6e767d">
                         <div className="inline-block group">
-                            <div className="text-[#6e767d">
-                                {/* <div className="inline-block group">
-                                    {!isCurrentUser(message[0] && message[0].userId) &&
-                                        <div style={{ flexDirection: 'row' }}>
-                                            <div>
-                                                {message[0] && message[0].userName}
-                                            </div>
-                                            <div>
-                                                {` (${message[0] && message[0].ethAddress})`}
-                                            </div>
-                                        </div>
-                                    }
-                                </div> */}
-                            </div>
+                            <h4 className="font-bold text-[15px] sm:text-base text-[#d9d9d9] group-hover:unerline inline-block">
+                                <p className="ml-3 p-0.5">{getEllipsisTxt(account, 6)}</p>
+                            </h4>
                         </div>
+
+
+                       
+                            <div className="text-[#d9d9d9] text-[15px] sm:text-base mt-0.5">
+
+                            {inputs && inputs.map((message) =>
+
+                            <div
+                                key={message[0] && message[0].data.id}>
+                                    {!isCurrentUser(message[0] && message[0].userId)}
+                            </div>
+
+
+
+
+
+                            )}
+
+
+
+
+                            </div>
+                   
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 }
