@@ -14,9 +14,9 @@ export default function WalletCard() {
                     <BsInfoCircle fontSize={17} color="#fff" />
                 </div>
                 <div>
-                    <p className="text-white font-semibold text-lg mt-1 p-4">
+                    <div className="text-white font-semibold text-lg mt-1 p-4">
                         <NativeBalance />
-                    </p>
+                    </div>
                     <button className="ml-auto bg-white text-black rounded-full font-bold text-sm py-1.5 px-3.5">
                         SEND
                     </button>

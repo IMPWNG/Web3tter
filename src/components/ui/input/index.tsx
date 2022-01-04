@@ -1,5 +1,5 @@
 import { useMoralisFile } from "react-moralis";
-import { useMoralis } from "react-moralis";
+import { useWeb3DappContext } from "../../../context/Web3Provider/Web3Provider";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import { useState } from 'react';
 import { message } from "antd";
@@ -13,7 +13,7 @@ import Blockie from "../blockies";
 
 export default function Input() {
 
-    const { contractABI, contractAddress } = useMoralis();
+    const { contractABI, contractAddress } = useWeb3DappContext();
     const contractABIJson = JSON.parse(contractABI);
     const ipfsProcessor = useMoralisFile();
     const contractProcessor = useWeb3ExecuteFunction();
@@ -47,7 +47,7 @@ export default function Input() {
             { base64: btoa(JSON.stringify(content)) },
             { saveIPFS: true }
         )
-        return ipfsResult._ipfs;
+        return ipfsResult.url();
     }
 
     const validateContent = () => {
@@ -85,14 +85,14 @@ export default function Input() {
         >
         <Blockie className="h-8 w-8 rounded-full" currentWallet scale={3} />
             <div className="w-full divide-y divide-gray-700">
-                <input className={`pb-7 ${content && "space-y-2.5"}`}>
+                <div className={`pb-7 ${content && "space-y-2.5"}`}>
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         placeholder="What's happening ?"
                         className="bg-transparent outline-none text-[#d9d9d9] text-lg placeholder-gray-500 tracking-wide w-full min-h-[50px]"
                     />
-                </input>
+                </div>
                 {!loading && (
                     <div className="flex items-center justify-between pt-2.5">
                         <div className="flex items-center">

@@ -1,18 +1,18 @@
-import type { AppProps } from 'next/app'
 import { MoralisProvider } from 'react-moralis';
-import Web3ContextProvider from '../context/Web3Context';
+import type { AppProps } from 'next/app';
+import { Web3DappWrapper } from "../context/Web3Provider/Web3Provider";
 
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function TwitterWeb3({ Component, pageProps }: AppProps) {
 
   return (
     <MoralisProvider appId="L8kuo2v3DlsVmjGfmKNYWZq3W0ZQQSdADNav4hum" serverUrl="https://zz6umijjwcmt.usemoralis.com:2053/server">
-      <Web3ContextProvider>
+      <Web3DappWrapper>
         <Component {...pageProps} />
-      </Web3ContextProvider>
+      </Web3DappWrapper>
     </MoralisProvider>
   );
 }
 
-export default MyApp
+export default TwitterWeb3;

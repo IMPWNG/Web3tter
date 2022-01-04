@@ -1,22 +1,21 @@
-import React from 'react';
-import Head from 'next/head';
 import { useMoralis } from 'react-moralis';
-
+import Head from 'next/head';
 import LoginPage from "../components/sections/login";
 import Sidebar from '../components/Sidebar';
 import Feed from '../components/Feed';
 import WalletInfo from '../components/WalletInfo';
 
-const Home = () => {
+function Home() {
   const { isAuthenticated } = useMoralis();
-  
+
   if (!isAuthenticated) {
-  return (
-    <div>
-      <LoginPage />
-    </div>
-  )
-}
+    return (
+      <div>
+        <LoginPage />
+      </div>
+    )
+  }
+  
   return (
     <div>
       <Head>
@@ -29,7 +28,7 @@ const Home = () => {
           <WalletInfo />
         </main>
     </div>
-  )
+  );
 }
 
 export default Home;
