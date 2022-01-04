@@ -38,8 +38,6 @@ export default function Post() {
                             </h4>
                         </div>
 
-
-                       
                             <div className="text-[#d9d9d9] text-[15px] sm:text-base mt-0.5">
 
                             {inputs && inputs.map((message) =>

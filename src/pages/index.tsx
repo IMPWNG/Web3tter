@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import React from 'react';
 import Head from 'next/head';
 import { useMoralis } from 'react-moralis';
 
@@ -7,8 +7,8 @@ import Sidebar from '../components/Sidebar';
 import Feed from '../components/Feed';
 import WalletInfo from '../components/WalletInfo';
 
-const Home: NextPage = () => {
-  const { isAuthenticated, logout } = useMoralis();
+const Home = () => {
+  const { isAuthenticated } = useMoralis();
   
   if (!isAuthenticated) {
   return (
@@ -32,4 +32,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;
