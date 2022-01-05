@@ -1,4 +1,6 @@
-# Twitter Like with web3 integration
+# Wev3tter
+
+A blockchain twitter version 
 
 ![Alt Text](https://media.giphy.com/media/9N5fcwJe5nrXxJYour/giphy.gif)
 
