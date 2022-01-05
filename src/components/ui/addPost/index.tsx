@@ -13,7 +13,7 @@ import Blockie from "../blockies";
 
 export default function AddPost() {
 
-    const { contractABI, contractAddress } = useWeb3DappContext();
+    const { contractABI, contractAddress, selectedCategory } = useWeb3DappContext();
     const contractABIJson = JSON.parse(contractABI);
     const ipfsProcessor = useMoralisFile();
     const contractProcessor = useWeb3ExecuteFunction();
@@ -23,6 +23,7 @@ export default function AddPost() {
 
     const addPost = async (post) => {
         const contentUri = await processContent(post);
+        const categoryId = selectedCategory["categoryId"];
         const options = {
             contractAddress: contractAddress,
             functionName: "createPost",
@@ -30,6 +31,7 @@ export default function AddPost() {
             params: {
                 _parentId: "0x91",
                 _contentUri: contentUri,
+                _categoryId: categoryId
             },
         }
         await contractProcessor.fetch({
@@ -58,6 +60,14 @@ export default function AddPost() {
     const clearForm = () => {
         setContent('');
     }
+    
+    const addEmoji = (e) => {
+        let sym = e.unified.split("-");
+        let codesArray = [];
+        sym.forEach((el) => codesArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codesArray);
+        setContent(content + emoji);
+    };
 
     function onSubmit(e) {
         e.preventDefault();
@@ -68,13 +78,7 @@ export default function AddPost() {
         clearForm();
     }
 
-    const addEmoji = (e) => {
-        let sym = e.unified.split("-");
-        let codesArray = [];
-        sym.forEach((el) => codesArray.push("0x" + el));
-        let emoji = String.fromCodePoint(...codesArray);
-        setContent(content + emoji);
-    };
+    
    
     <Blockie className = "h-8 w-8 rounded-full" currentWallet scale = { 3} />
 
