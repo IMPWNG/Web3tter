@@ -2,6 +2,21 @@
 
 ![Alt Text](https://media.giphy.com/media/9N5fcwJe5nrXxJYour/giphy.gif)
 
+
+## 
+
+Trigger Event with remix on localhost: 
+
+Hardhat local remixId - remixd -s .\contracts
+Moralis Hardhat Devchain Proxy Server -- C:\Users\matis\Desktop\frp_0.38.0_windows_386>frpc.exe -c frpc.ini
+
+
+
+
+
+
+
+
 ## Features
 
 - Login logout using Moralis Provider (Metamask)
@@ -16,9 +31,6 @@
 
 
 
-## Error
 
-Error: XMLHttpRequest failed: "Unable to connect to the Parse API"
->   Just restore the Moralis Session
 
 

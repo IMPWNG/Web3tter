@@ -11,7 +11,7 @@ import { Picker } from "emoji-mart";
 
 import Blockie from "../blockies";
 
-export default function Input() {
+export default function AddPost() {
 
     const { contractABI, contractAddress } = useWeb3DappContext();
     const contractABIJson = JSON.parse(contractABI);

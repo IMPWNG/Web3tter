@@ -1,66 +1,59 @@
-import { useEffect, useState, useRef } from "react";
-import { useMoralis } from "react-moralis";
+import { useMoralisQuery } from "react-moralis";
+import { useEffect, useState } from "react";
+import { Comment, Avatar, Divider } from "antd";
 
+import Text from "antd/lib/typography/Text";
 import Blockie from "../blockies";
-import { getEllipsisTxt } from "../../../helpers/formatters";
-
-export default function Post() {
-
-    const { Moralis, user, account } = useMoralis();
-    const currentUserId = user.id;
-    const [inputs, setInputs] = useState<any[]>([]);
-    const [updated, setUpdated] = useState();
-    const newMessage = new Moralis.Object("Messages");
-
-    const getAllMessages = async () => {
-        const result = await Moralis.Cloud.run("getAllMessages");
-        setInputs(result)
-    }
-
-    const isCurrentUser = (userId) => {
-        return currentUserId === userId;
-    }
+import cardPostStyle from "../cardPostStyle";
 
 
- 
+const Post = ({post}) => {
+    const { contentId } = post;
+    const [postContent, setPosContent] = useState({ title: "default", content: "default" });
+    const { data } = useMoralisQuery("Contents", (query) => query.equalTo("contentId", contentId));
 
+    useEffect(() => {
+        function extractUri(data) {
+            const fetchedContent = JSON.parse(JSON.stringify(data, ["contentUri"]));
+            const contentUri = fetchedContent[0]["contentUri"];
+            return contentUri;
+        }
+        async function fetchIPFSDoc(ipfsHash) {
+            console.log(ipfsHash);
+            const url = ipfsHash;
+            const response = await fetch(url);
+            return await response.json();
+        }
+        async function processContent() {
+            const content = await fetchIPFSDoc(extractUri(data));
+            setPosContent(content);
+        }
+        if (data.length > 0) {
+            processContent();
+        }
+    }, [data]);
 
-    return (
-        <div className="p-3 flex cursor-pointer border-b border-gray-700">
-            <Blockie className="h-8 w-8 rounded-full" currentWallet scale={3} />
-            
-            <div className="flex flex-col space-y-2 w-full">
-                <div className="flexjustify-between">
-                    <div className="text-[#6e767d">
-                        <div className="inline-block group">
-                            <h4 className="font-bold text-[15px] sm:text-base text-[#d9d9d9] group-hover:unerline inline-block">
-                                <p className="ml-3 p-0.5">{getEllipsisTxt(account, 6)}</p>
-                            </h4>
-                        </div>
+    const loading = "";
 
-                            <div className="text-[#d9d9d9] text-[15px] sm:text-base mt-0.5">
+    const result = (
 
-                            {inputs && inputs.map((message) =>
-
-                            <div
-                                key={message[0] && message[0].data.id}>
-                                    {!isCurrentUser(message[0] && message[0].userId)}
-                            </div>
-
-
-
-
-
-                            )}
-
-
-
-
-                            </div>
-                   
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+        <Comment
+            style={{ ...cardPostStyle.card, padding: "0px 15px", marginBottom: "10px" }}
+            author={<Text strong>{post["postOwner"]}</Text>}
+            avatar={<Avatar src={<Blockie address={post["postOwner"]} scale="4" />}></Avatar>}
+            content={
+                <>
+                    <Text strong style={{ fontSize: "20px", color: "#333" }}>
+                        {postContent["title"]}
+                    </Text>
+                    <p style={{ fontSize: "15px", color: "#111" }}>{postContent["content"]}</p>
+                    <Divider style={{ margin: "15px 0" }} />
+                </>
+            }
+        />
+    )
+    return postContent["title"] === "default" ? loading : result;
 }
+
+
+export default Post

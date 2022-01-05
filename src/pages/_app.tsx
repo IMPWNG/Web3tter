@@ -7,7 +7,7 @@ import '../styles/globals.css'
 function TwitterWeb3({ Component, pageProps }: AppProps) {
 
   return (
-    <MoralisProvider appId="L8kuo2v3DlsVmjGfmKNYWZq3W0ZQQSdADNav4hum" serverUrl="https://zz6umijjwcmt.usemoralis.com:2053/server">
+    <MoralisProvider appId="EkDzqxdXZY1dUZ5aag5toFfYyPA9fA1eqVtHYkmd" serverUrl="https://lamoyru9w7tr.usemoralis.com:2053/server">
       <Web3DappWrapper>
         <Component {...pageProps} />
       </Web3DappWrapper>
