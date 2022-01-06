@@ -29,10 +29,7 @@ export default function Sidebar() {
             <div className="space-y2.5 mt-4 mb-2.5 xl:ml-24 fixed bottom-0">
                 <AccountButton />
             </div>
-            
-            
-            
-            
+        
         </div>
     )
 };
