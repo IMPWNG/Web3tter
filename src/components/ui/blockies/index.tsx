@@ -16,7 +16,7 @@ function Blockie(props) {
         <Blockies
             seed={props.currentWallet ? account.toLowerCase() : props.address.toLowerCase()}
             className="identicon"
-            {...props}
+            {...props}flex
         />
     );
 }

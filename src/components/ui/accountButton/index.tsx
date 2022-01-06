@@ -14,13 +14,13 @@ export default function AccountButton() {
     const { account, chainId, logout } = useMoralis();
     
     return (
-        <div className="text-[#d9d9d9] flex items-center justify-center hoverAnimation xl:ml-auto xl:-mr-5 mt-auto">
-            <Menu as="div" className="ml-3">
+        <div>
+            <Menu as="div">
                 <div>
-                    <Menu.Button className="relative w-full py-2 pl-3 pr-10 text-left flex text-gray-300 hover:text-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-                        <Blockie className="h-8 w-8 rounded-full" currentWallet scale={3} />
-                        <p className="ml-3 p-0.5">{getEllipsisTxt(account, 6)}</p>
-                        </Menu.Button>
+                    <Menu.Button className="text-[#d9d9d9] flex items-center justify-center xl:justify-start text-xl space-x-3 hoverAnimation">
+                        <Blockie className="rounded-full h-7" currentWallet scale={3} />
+                        <span className="hidden xl:inline">{getEllipsisTxt(account, 4)}</span>
+                    </Menu.Button>
                 </div>
                 <Transition
                     as={Fragment}
@@ -56,22 +56,7 @@ export default function AccountButton() {
                 </Transition> 
                 
             </Menu>
-            
-
         </div>
-
-
-
-        // <div >
-        //     <img src="" alt="" className="h-10 w-10 rounded-full xl:mr-2.5" />
-        //     <div className="hidden xl:inline leading-5">
-        //         <h4 className="font-bold">11</h4>
-        //         <p className="text-[#6e767d]">@11</p>
-        //     </div>
-        //     <DotsHorizontalIcon className="h-5 hidden xl:inline ml-10" />
-        //     onClick = {() => logout()}
-        // </div>
-    )
-
+    );
 }
 
