@@ -3,13 +3,12 @@ import { useWeb3DappContext } from "../../../context/Web3Provider/Web3Provider";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import { useState } from 'react';
 import { message } from "antd";
-
-
 import { EmojiHappyIcon } from '@heroicons/react/outline';
-import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
 import Blockie from "../blockies";
+
+import "emoji-mart/css/emoji-mart.css";
 
 export default function AddPost() {
 
@@ -77,11 +76,7 @@ export default function AddPost() {
         addPost({ content })
         clearForm();
     }
-
-    
    
-    <Blockie className = "h-8 w-8 rounded-full" currentWallet scale = { 3} />
-
     return (
         <form 
             className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll ${loading && "opacity-60"}`}
@@ -119,7 +114,7 @@ export default function AddPost() {
                                 />
                             )}
                         </div>
-                        <button type="submit" className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default">
+                        <button type="submit" className="eth-color text-white rounded-full px-4 py-1.5 font-bold">
                             Send
                         </button>
                     </div>

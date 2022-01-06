@@ -11,11 +11,9 @@ export default function Categories({ categories })  {
         setSelectedCategory(selectedCategory[0]);
         
     }
-    console.log(categories)
 
     return (
-        <div className="text-[#d9d9d9] flex items-center sm:justify-between py-2 px-3 sticky top-0 z-50 bg-black border-b border-gray-700">
-
+        <div className="text-[#d9d9d9]">
             <Menu
                 onClick={(e) => selectCategory(e.key)}
                 className="text-lg sm:text-xl font-bold"
@@ -24,9 +22,7 @@ export default function Categories({ categories })  {
                     {(categories || []).map((category) => (
                         <Menu.Item key={category["categoryId"]}>{category["category"]}</Menu.Item>
                     ))}
-                    
                 </Menu.ItemGroup>
-
             </Menu>
         </div>
     );

@@ -4,9 +4,7 @@ import { Button } from "antd";
 import { Fragment } from 'react';
 import { getExplorer } from "../../../helpers/networks";
 import { getEllipsisTxt } from "../../../helpers/formatters";
-
 import { LogoutIcon, EyeIcon } from "@heroicons/react/outline";
-
 
 import Blockie from "../blockies";
 
@@ -46,6 +44,5 @@ export default function AccountButton() {
             </Menu>
         </div>
     );
-
 }
 

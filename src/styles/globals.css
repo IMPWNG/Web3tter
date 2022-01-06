@@ -15,7 +15,7 @@
     .icon {
         @apply cursor-pointer w-9 h-9 hover:bg-[#1d9bf0] hover:bg-opacity-10 flex items-center justify-center rounded-full transition ease-out;
     }
-    .eth-card {
+    .eth-color {
   background-color:#a099ff;
   background-image: 
     radial-gradient(at 83% 67%, rgb(152, 231, 156) 0, transparent 58%), 
