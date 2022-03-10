@@ -4,21 +4,9 @@ export const networkConfigs = {
         blockExplorerUrl: "https://etherscan.io/",
         wrapped: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
-    "0x3": {
-        currencySymbol: "ETH",
-        blockExplorerUrl: "https://ropsten.etherscan.io/",
-    },
-    "0x4": {
-        currencySymbol: "ETH",
-        blockExplorerUrl: "https://kovan.etherscan.io/",
-    },
     "0x2a": {
         currencySymbol: "ETH",
         blockExplorerUrl: "https://rinkeby.etherscan.io/",
-    },
-    "0x5": {
-        currencySymbol: "ETH",
-        blockExplorerUrl: "https://goerli.etherscan.io/",
     },
     "0x539": {
         chainName: "Local Chain",
@@ -33,23 +21,6 @@ export const networkConfigs = {
         currencySymbol: "AVAX",
         rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
         blockExplorerUrl: "https://cchain.explorer.avax.network/",
-    },
-    "0x38": {
-        chainId: 56,
-        chainName: "Smart Chain",
-        currencyName: "BNB",
-        currencySymbol: "BNB",
-        rpcUrl: "https://bsc-dataseed.binance.org/",
-        blockExplorerUrl: "https://bscscan.com/",
-        wrapped: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    },
-    "0x61": {
-        chainId: 97,
-        chainName: "Smart Chain - Testnet",
-        currencyName: "BNB",
-        currencySymbol: "BNB",
-        rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-        blockExplorerUrl: "https://testnet.bscscan.com/",
     },
     "0x89": {
         chainId: 137,

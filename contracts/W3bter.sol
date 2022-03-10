@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.9;
 
-contract Decentradit {
+contract W3bter {
 
     event PostCreated (bytes32 indexed postId, address indexed postOwner, bytes32 indexed parentId, bytes32 contentId, bytes32 categoryId);
     event ContentAdded (bytes32 indexed contentId, string contentUri);

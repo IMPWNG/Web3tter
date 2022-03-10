@@ -4,7 +4,7 @@ import { useChain } from "react-moralis";
 
 import { Listbox, Transition } from '@headlessui/react'
 
-import { PolygonLogo, ETHLogo } from "./Logo";
+import { PolygonLogo, ETHLogo, AvaxLogo } from "./Logo";
 
 const networkItem = [
     {
@@ -15,21 +15,6 @@ const networkItem = [
     {
         key: "0x539",
         value: "Local Chain",
-        icon: <ETHLogo />,
-    },
-    {
-        key: "0x3",
-        value: "Ropsten Testnet",
-        icon: <ETHLogo />,
-    },
-    {
-        key: "0x4",
-        value: "Rinkeby Testnet",
-        icon: <ETHLogo />,
-    },
-    {
-        key: "0x2a",
-        value: "Kovan Testnet",
         icon: <ETHLogo />,
     },
     {
@@ -46,6 +31,11 @@ const networkItem = [
         key: "0x13881",
         value: "Mumbai",
         icon: <PolygonLogo />,
+    },
+    {
+        key: "0xa86a",
+        value: "Avax",
+        icon: <AvaxLogo />,
     },
 
 ];

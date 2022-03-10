@@ -13,8 +13,8 @@ export default function Feed() {
                 <div>
                     <Categories />
                 </div>
-                <div className="hoverAnimation w-9 h-9 flex items-center justify-center xl:px-0 ml-auto">
-
+                <div className="hoverAnimation w-5 h-9 flex items-center justify-center xl:px-0 ml-auto">
+                    <BellIcon />
                 </div>
             </div>
             <AddPost />

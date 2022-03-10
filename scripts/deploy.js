@@ -3,10 +3,10 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const Decentradit = await hre.ethers.getContractFactory("Decentradit");
-  const decentradit = await Decentradit.deploy();
-  await decentradit.deployed();
-  console.log("Decentradit", decentradit.address);
+  const W3bter = await hre.ethers.getContractFactory("W3bter");
+  const w3bter = await W3bter.deploy();
+  await w3bter.deployed();
+  console.log("W3bter", decentradit.address);
 }
 
 
